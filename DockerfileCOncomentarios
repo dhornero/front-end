@@ -1,0 +1,38 @@
+# esto es lo que hemos ejecutado y con este dockerfile tenemos lo mismo.
+# para subirla docker build -t crispinclander/frontend:v1 .
+# $ docker build -t crispinclander/frontend:v1 .
+# $ docker image ls (nos muestra las imagenes en las que esta el que hemos crador)
+# $ docker image history crispinclander/frontend:v1
+# $ docker container run --rm -idt -P crispinclander/frontend:v1 (Probamos la imagemN)
+# $ docker logs -f 1a2814b69ae1 (para ver los logs cuando arranco la aplicacion)
+# $ docker rm -f 1a2814b69ae1 (borro el docker que esta ocrriendo antes de subirlo)
+# $ docker login
+# $ docker push crispinclander/frontend:v1
+# $ docker image tag crispinclander/frontend:v1 crispinclander/frontend:latest (la tageo como latest)
+# $ docker push crispinclander/frontend (vuelvo a subir)
+#  0 ps aus
+#   1 node -v
+#   2 mkdir -p /opt/frontend
+#   3 ls /opt/frontend/
+#   4 cls
+#   5 clear
+#   6 exit
+#   7 npm -v
+#   8 node -v
+#   9 ls /opt/frontend/
+#  10 npm install
+#  11 cd /opt/frontend/
+#  12 npm install
+#  13 npm start
+FROM node:4-alpine
+
+WORKDIR /opt/frontend
+
+COPY . .
+
+RUN npm install
+
+EXPOSE 8079
+
+CMD npm start
+
